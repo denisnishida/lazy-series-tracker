@@ -99,3 +99,6 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/windows,laravel,phpstorm
 
 github example.gitignore
+ (2).gitignore
+readme (2).md
+.env.example
