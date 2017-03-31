@@ -82,6 +82,8 @@
                     Laravel
                 </div>
 
+                <button onclick="lock.show();">Login</button>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -93,3 +95,16 @@
         </div>
     </body>
 </html>
+
+<script src="https://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
+<script>
+  var lock = new Auth0Lock('{{ env("AUTH0_CLIENT_ID") }}', '{{ env("AUTH0_DOMAIN") }}', {
+    auth: {
+      redirectUrl: '{{ env ("AUTH0_CALLBACK_URL" )}}',
+      responseType: 'code',
+      params: {
+        scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    }
+  });
+</script>

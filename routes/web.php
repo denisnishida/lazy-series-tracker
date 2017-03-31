@@ -11,6 +11,22 @@
 |
 */
 
+Route::get('/callback', '\Auth0\Login\Auth0Controller@callback');
+// Route::get('/callback', function() {
+//     //dd(Auth0::getUser());
+//     return view('index');
+// });
+
+Route::get('/logout', function() {
+    Auth::logout();
+    return Redirect::home();
+});
+
 Route::get('/', function () {
     return view('welcome');
+
+    //you can check if user authenticated with Auth::check()
+        //if (Auth::check()) dd('LOGGED IN',Auth::user());
+
+        //return view('index');
 });
