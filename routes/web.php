@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'Tracker@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/got', [
+    'middleware' => ['auth'],
+    'uses' => function() {
+        echo "You are not allowed to view this page!";
+    }
+]);
