@@ -36,7 +36,7 @@
                                     <label for="notes" class="col-md-4 control-label">Your Notes</label>
 
                                     <div class="col-md-6">
-                                        <textarea id="notes" class="form-control" rows="4"
+                                        <textarea id="notes" name="notes" class="form-control" rows="4"
                                                   placeholder="You can write here details and links."></textarea>
                                     </div>
                                 </div>

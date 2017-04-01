@@ -23,12 +23,14 @@
 
                             @foreach ($series as $item)
                                 <tr>
-                                    <td>{{$item['name']}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td><a href="#">See Notes</a></td>
                                     <td></td>
-                                    <td>{{$item['updated_at']}}</td>
+                                    <td>{{$item->updated_at}}</td>
                                     <td>
-                                        <a href="/delete/{{$item['id']}}">Delete</a>
+                                        <a href="/delete/{{$item->series_id}}">
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
