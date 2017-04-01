@@ -22,6 +22,7 @@ class Tracker extends Controller
         return view('series_form');
     }
 
+    public function db_store_series($data)
     {
         $series = new Series();
 
@@ -31,6 +32,7 @@ class Tracker extends Controller
         $series->save();
     }
 
+    public function db_store_Season($data)
     {
         $season = new Season();
 
@@ -39,6 +41,7 @@ class Tracker extends Controller
         $season->save();
     }
 
+    public function db_store_Bookmark($data)
     {
         $bookmark = new Bookmark();
 
