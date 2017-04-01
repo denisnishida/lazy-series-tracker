@@ -15,9 +15,10 @@
                         <table class="table">
                             <tr>
                                 <th>Name</th>
-                                <th>Notes</th>
+                                <th class="col-md-2">Notes</th>
                                 <th>Bookmark</th>
-                                <th>Last Watched at</th>
+                                <th class="col-md-3">Last Watched at</th>
+                                <th class="col-md-1">Operations</th>
                             </tr>
 
                             @foreach ($series as $item)
@@ -26,6 +27,9 @@
                                     <td><a href="#">See Notes</a></td>
                                     <td></td>
                                     <td>{{$item['updated_at']}}</td>
+                                    <td>
+                                        <a href="/delete/{{$item['id']}}">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

@@ -23,6 +23,11 @@ Route::get('/addseries', [
     'uses' => 'Tracker@show_series_form'
 ]);
 
+Route::get('/delete/{id}', [
+    'middleware' => ['auth'],
+    'uses' => 'Tracker@delete'
+]);
+
 Route::post('/register_series', [
     'middleware' => ['auth'],
     'uses' => 'Tracker@store_series'

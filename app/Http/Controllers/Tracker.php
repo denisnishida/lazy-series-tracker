@@ -24,6 +24,10 @@ class Tracker extends Controller
 
     public function store_series()
     {
+        $this->validate(request(), [
+            'name' => 'required'
+        ]);
+
         $series = new Series();
 
         $series->name = request('name');
@@ -50,5 +54,12 @@ class Tracker extends Controller
         $bookmark = $data;
 
         $bookmark->save();
+    }
+
+    public function delete($id)
+    {
+        $series = Series::destroy($id);
+
+        return redirect('/');
     }
 }
