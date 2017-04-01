@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use \App\Series;
-use \App\Season;
-use \App\Bookmark;
+use App\Series;
+use App\Season;
+use App\Bookmark;
 
 class Tracker extends Controller
 {
@@ -22,17 +22,19 @@ class Tracker extends Controller
         return view('series_form');
     }
 
-    public function db_store_series($data)
+    public function store_series()
     {
         $series = new Series();
 
-        $series->name = $data->name;
-        $series->notes = $data->notes;
+        $series->name = request('name');
+        $series->notes = request('notes');
 
         $series->save();
+
+        return redirect('/');
     }
 
-    public function db_store_Season($data)
+    public function store_season($data)
     {
         $season = new Season();
 
@@ -41,7 +43,7 @@ class Tracker extends Controller
         $season->save();
     }
 
-    public function db_store_Bookmark($data)
+    public function store_bookmark($data)
     {
         $bookmark = new Bookmark();
 

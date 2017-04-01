@@ -22,3 +22,8 @@ Route::get('/addseries', [
     'middleware' => ['auth'],
     'uses' => 'Tracker@show_series_form'
 ]);
+
+Route::post('/register_series', [
+    'middleware' => ['auth'],
+    'uses' => 'Tracker@store_series'
+]);
