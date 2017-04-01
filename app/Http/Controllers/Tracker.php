@@ -31,7 +31,7 @@ class Tracker extends Controller
         $series = new Series();
 
         $series->name = request('name');
-        $series->notes = request('notes');
+        //$series->notes = request('notes');
 
         $series->save();
 
