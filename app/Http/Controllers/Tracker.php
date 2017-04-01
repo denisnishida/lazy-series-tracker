@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Series;
 
 class Tracker extends Controller
 {
     public function show()
     {
-        $characters = [
-            'Jon Snow' => 'Kit Harington',
-            'Melisandre' => 'Carice van Houten',
-            'Ramsay Bolton' => 'Iwan Rheon'
-        ];
+        $series = Series::all();
 
-        return view('welcome')->withCharacters($characters);
+        return view('welcome', compact('series'));
     }
 }

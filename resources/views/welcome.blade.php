@@ -19,12 +19,12 @@
                                 <th>Last Watched at</th>
                             </tr>
 
-                            @foreach ($characters as $key => $value)
+                            @foreach ($series as $item)
                                 <tr>
-                                    <td>{{$key}}</td>
+                                    <td>{{$item['name']}}</td>
                                     <td><a href="#">See Notes</a></td>
-                                    <td>{{$value}}</td>
                                     <td></td>
+                                    <td>{{$item['updated_at']}}</td>
                                 </tr>
                             @endforeach
                         </table>
