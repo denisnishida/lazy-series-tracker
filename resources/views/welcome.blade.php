@@ -6,25 +6,25 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-success">
 
-                    <div class="panel-heading">
-                        List of Game of Thrones Characters
-                    </div>
-
                     @if (Auth::check())
+                        <div class="panel-heading">
+                            Your Series List
+                        </div>
+
                         <table class="table">
                             <tr>
-                                <th>Character</th>
-                                <th>Actor</th>
+                                <th>Name</th>
+                                <th>Notes</th>
+                                <th>Bookmark</th>
+                                <th>Last Watched at</th>
                             </tr>
 
                             @foreach ($characters as $key => $value)
                                 <tr>
-                                    <td>
-                                        {{$key}}
-                                    </td>
-                                    <td>
-                                        {{$value}}
-                                    </td>
+                                    <td>{{$key}}</td>
+                                    <td><a href="#">See Notes</a></td>
+                                    <td>{{$value}}</td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                         </table>
@@ -33,8 +33,11 @@
                 </div>
 
                 @if (Auth::guest())
+                    <p>
+                        This is simple website to manage what you are watching.
+                    </p>
                     <a href="/login" class="btn btn-info">
-                        You need to login to see the list
+                        Login to see the list
                     </a>
                 @endif
 

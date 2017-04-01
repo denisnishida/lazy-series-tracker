@@ -19,7 +19,8 @@ Route::get('/', 'Tracker@show');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
+Route::get('/home', 'Tracker@show');
 
 Route::get('/got', [
     'middleware' => ['auth'],
