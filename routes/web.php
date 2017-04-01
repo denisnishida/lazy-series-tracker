@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'Tracker@show');
 
 Auth::routes();
@@ -22,9 +18,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index');
 Route::get('/home', 'Tracker@show');
 
-Route::get('/got', [
+Route::get('/addseries', [
     'middleware' => ['auth'],
-    'uses' => function() {
-        echo "You are not allowed to view this page!";
-    }
+    'uses' => 'Tracker@show_series_form'
 ]);

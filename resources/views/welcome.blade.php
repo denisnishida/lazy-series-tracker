@@ -8,7 +8,8 @@
 
                     @if (Auth::check())
                         <div class="panel-heading">
-                            Your Series List
+                            <div>Your Series List</div>
+                            <div><a href="/addseries">Add Series</a></div>
                         </div>
 
                         <table class="table">
