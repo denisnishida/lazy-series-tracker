@@ -18,6 +18,8 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index');
 Route::get('/home', 'Tracker@show');
 
+Route::get('/series', 'Tracker@show_all_series');
+
 Route::get('/addseries', [
     'middleware' => ['auth'],
     'uses' => 'Tracker@show_series_form'

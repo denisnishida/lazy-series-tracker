@@ -3,16 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Series;
 use App\Season;
 use App\Bookmark;
+use App\User;
+use \Auth;
 
 class Tracker extends Controller
 {
     public function show()
     {
-        $series = Series::all();
+        if (Auth::check())
+        {
+            $user_id = Auth::user()->id;
+
+            $series = DB::table('bookmark')
+                ->join('series', 'series.id', '=', 'bookmark.series_id')
+                ->where('bookmark.user_id', '=', $user_id)
+                ->select('series.name', 'bookmark.*')
+                ->get();
+        }
 
         return view('welcome', compact('series'));
     }
@@ -22,43 +34,39 @@ class Tracker extends Controller
         return view('series_form');
     }
 
-    public function store_series()
+    public function show_all_series()
+    {
+        $series = DB::table('series')->get();
+
+        return view('allseries', compact('series'));
+    }
+
+    public function store()
     {
         $this->validate(request(), [
             'name' => 'required'
         ]);
 
         $series = new Series();
-
         $series->name = request('name');
-        //$series->notes = request('notes');
-
         $series->save();
+
+        $bookmark = new Bookmark();
+        $bookmark->notes = request('notes');
+        $bookmark->series_id = $series->id;
+        $bookmark->user_id = Auth::user()->id;
+        $bookmark->save();
 
         return redirect('/');
     }
 
-    public function store_season($data)
+    public function delete($series_id)
     {
-        $season = new Season();
+        $user_id = Auth::user()->id;
 
-        $season = $data;
-
-        $season->save();
-    }
-
-    public function store_bookmark($data)
-    {
-        $bookmark = new Bookmark();
-
-        $bookmark = $data;
-
-        $bookmark->save();
-    }
-
-    public function delete($id)
-    {
-        $series = Series::destroy($id);
+        Bookmark::where('series_id', '=', $series_id)
+            ->where('user_id', '=', $user_id)
+            ->delete();
 
         return redirect('/');
     }
